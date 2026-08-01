@@ -24,3 +24,16 @@ while True:
 
     else:
         print("Choix invalide. Veuillez choisir entre 1 et 4.")
+
+
+dataset = {
+            "nom": nom,
+            "domaine": domaine,
+            "lignes": lignes,
+            "colonnes": colonnes,
+            "taille": taille,
+            "format": format,
+            "public": public
+        }
+domaine_Autorise=("Santé","Finance","Agriculture","Transport","Education")  
+       
