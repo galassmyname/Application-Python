@@ -1,0 +1,11 @@
+[
+    {
+        "label": "domaines_autorises",
+        "kind": 5,
+        "importPath": "datasetManager.main",
+        "description": "datasetManager.main",
+        "peekOfCode": "domaines_autorises = (\"Santé\", \"Finance\", \"Agriculture\", \"Transport\", \"Education\")\nwhile True:\n    print(\"\\n========================\")\n    print(\"1. Ajouter un dataset\")\n    print(\"2. Afficher les datasets\")\n    print(\"3. Rechercher\")\n    print(\"4. Quitter\")\n    print(\"==================\")\n    choix = input(\"Votre choix : \")\n    if choix == \"1\":",
+        "detail": "datasetManager.main",
+        "documentation": {}
+    }
+]
