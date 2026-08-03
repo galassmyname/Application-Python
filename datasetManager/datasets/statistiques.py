@@ -1,6 +1,6 @@
 # statistiques.py
 
-from gestion import datasets, domaines_autorises
+from datasets.gestion import datasets, domaines_autorises
 
 
 def statistiques():

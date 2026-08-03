@@ -1,17 +1,17 @@
 # main.py
 
-from menu import afficher_menu
-from gestion import (
+from interface.menu import afficher_menu
+from datasets.gestion import (
     ajouter_dataset,
     afficher_datasets,
     rechercher_dataset,
     trier_dataset,
     modifier_dataset,
     supprimer_dataset,
-    sauvegarder,
-    recharger,
+    datasets,
 )
-from statistiques import statistiques
+from datasets.statistiques import statistiques
+from stockage.csv_manager import sauvegarder_csv, charger_csv
 
 
 def main():
@@ -37,9 +37,12 @@ def main():
         elif choix == "8":
             statistiques()
         elif choix == "9":
-            sauvegarder()
+            sauvegarder_csv(datasets)
         elif choix == "10":
-            recharger()
+            resultat = charger_csv()
+            if resultat is not None:
+                datasets.clear()
+                datasets.extend(resultat)
         else:
             print("Choix invalide. Veuillez choisir entre 1 et 10.")
 

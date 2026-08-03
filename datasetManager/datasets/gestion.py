@@ -1,4 +1,6 @@
-# gestion.py
+# datasets/gestion.py
+
+from interface.affichage import afficher_resume_dataset, afficher_liste_datasets
 
 domaines_autorises = ("Santé", "Finance", "Agriculture", "Transport", "Education")
 datasets = []
@@ -22,28 +24,6 @@ datasets.append(
         "colonnes": 8,
         "taille": 120.5,
         "format": "JSON",
-        "public": True,
-    }
-)
-datasets.append(
-    {
-        "nom": "Stock-Prices",
-        "domaine": "Finance",
-        "lignes": 2000000,
-        "colonnes": 15,
-        "taille": 300.0,
-        "format": "CSV",
-        "public": False,
-    }
-)
-datasets.append(
-    {
-        "nom": "Crop-Yields",
-        "domaine": "Agriculture",
-        "lignes": 15000,
-        "colonnes": 20,
-        "taille": 25.0,
-        "format": "CSV",
         "public": True,
     }
 )
@@ -94,34 +74,11 @@ def ajouter_dataset():
         "public": public,
     }
     datasets.append(dataset)
-
-    print("\n=== Résumé du dataset ===")
-    print(f"Nom       : {dataset['nom']}")
-    print(f"Domaine   : {dataset['domaine']}")
-    print(f"Lignes    : {dataset['lignes']}")
-    print(f"Colonnes  : {dataset['colonnes']}")
-    print(f"Taille    : {dataset['taille']} Mo")
-    print(f"Format    : {dataset['format']}")
-    print(f"Public    : {'Oui' if dataset['public'] else 'Non'}")
-    print("==========================\n")
+    afficher_resume_dataset(dataset)
 
 
 def afficher_datasets():
-    if len(datasets) == 0:
-        print("\nAucun dataset enregistré pour le moment.\n")
-        return
-
-    print(f"\n=== Liste des datasets ({len(datasets)}) ===")
-    for i, d in enumerate(datasets, start=1):
-        print(f"\n--- Dataset {i} ---")
-        print(f"Nom       : {d['nom']}")
-        print(f"Domaine   : {d['domaine']}")
-        print(f"Lignes    : {d['lignes']}")
-        print(f"Colonnes  : {d['colonnes']}")
-        print(f"Taille    : {d['taille']} Mo")
-        print(f"Format    : {d['format']}")
-        print(f"Public    : {'Oui' if d['public'] else 'Non'}")
-    print("==========================\n")
+    afficher_liste_datasets(datasets)
 
 
 def rechercher_dataset():
@@ -132,15 +89,8 @@ def rechercher_dataset():
     nom_recherche = input("Nom du dataset à rechercher : ")
     for d in datasets:
         if d["nom"].lower() == nom_recherche.lower():
-            print(f"\n=== Dataset trouvé ===")
-            print(f"Nom       : {d['nom']}")
-            print(f"Domaine   : {d['domaine']}")
-            print(f"Lignes    : {d['lignes']}")
-            print(f"Colonnes  : {d['colonnes']}")
-            print(f"Taille    : {d['taille']} Mo")
-            print(f"Format    : {d['format']}")
-            print(f"Public    : {'Oui' if d['public'] else 'Non'}")
-            print("==========================\n")
+            print("\n=== Dataset trouvé ===")
+            afficher_resume_dataset(d)
             return
 
     print(f"\nAucun dataset trouvé avec le nom '{nom_recherche}'.\n")
@@ -206,51 +156,3 @@ def supprimer_dataset():
             return
 
     print(f"\nAucun dataset trouvé avec le nom '{nom_recherche}'.\n")
-
-
-def sauvegarder():
-    if len(datasets) == 0:
-        print("\nAucun dataset à sauvegarder.\n")
-        return
-
-    fichier = open("datasets.csv", "w", encoding="utf-8")
-    fichier.write("nom,domaine,lignes,colonnes,taille,format,public\n")
-    for d in datasets:
-        ligne = f"{d['nom']},{d['domaine']},{d['lignes']},{d['colonnes']},{d['taille']},{d['format']},{d['public']}\n"
-        fichier.write(ligne)
-    fichier.close()
-    print(f"\n{len(datasets)} dataset(s) sauvegardé(s) dans datasets.csv\n")
-
-
-def recharger():
-    global datasets
-    try:
-        fichier = open("datasets.csv", "r", encoding="utf-8")
-        lignes_fichier = fichier.readlines()
-        fichier.close()
-
-        if len(lignes_fichier) <= 1:
-            print("\nErreur : le fichier datasets.csv est vide.\n")
-            return
-
-        nouveaux_datasets = []
-        for ligne in lignes_fichier[1:]:
-            valeurs = ligne.strip().split(",")
-            dataset = {
-                "nom": valeurs[0],
-                "domaine": valeurs[1],
-                "lignes": int(valeurs[2]),
-                "colonnes": int(valeurs[3]),
-                "taille": float(valeurs[4]),
-                "format": valeurs[5],
-                "public": valeurs[6] == "True",
-            }
-            nouveaux_datasets.append(dataset)
-
-        datasets = nouveaux_datasets
-        print(f"\n{len(datasets)} dataset(s) rechargé(s) depuis datasets.csv\n")
-
-    except FileNotFoundError:
-        print(
-            "\nErreur : le fichier datasets.csv n'existe pas. Sauvegardez d'abord (option 9).\n"
-        )

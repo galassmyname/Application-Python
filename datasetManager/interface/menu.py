@@ -1,4 +1,4 @@
-# menu.py
+# interface/menu.py
 
 
 def afficher_menu():
