@@ -1,0 +1,5 @@
+nom,domaine,lignes,colonnes,taille,format,public
+Titanic,Transport,891,12,48.0,CSV,True
+COVID-Cases,Santé,500000,8,120.5,JSON,True
+Stock-Prices,Finance,2000000,15,300.0,CSV,False
+Crop-Yields,Agriculture,15000,20,25.0,CSV,True

@@ -1,5 +1,6 @@
 # Partie 2 : Structures de contrôle
 domaines_autorises = ("Santé", "Finance", "Agriculture", "Transport", "Education")
+
 datasets = []
 
 # Jeu de données d'exemple pour tester les statistiques
@@ -61,6 +62,8 @@ while True:
     print("6. Modifier")
     print("7. Supprimer")
     print("8. Statistiques")
+    print("9. Sauvegarder")
+    print("10. Recharger")
     print("==================")
 
     choix = input("Votre choix : ")
@@ -250,5 +253,36 @@ while True:
             for domaine, nb in repartition_domaines.items():
                 print(f"  {domaine} : {nb}")
             print("==========================\n")
+    elif choix == "9":
+        if len(datasets) == 0:
+            print("\nAucun dataset à sauvegarder.\n")
+        else:
+            fichier = open("datasets.csv", "w", encoding="utf-8")
+            fichier.write("nom,domaine,lignes,colonnes,taille,format,public\n")
+            for d in datasets:
+                ligne = f"{d['nom']},{d['domaine']},{d['lignes']},{d['colonnes']},{d['taille']},{d['format']},{d['public']}\n"
+                fichier.write(ligne)
+            fichier.close()
+            print(f"\n{len(datasets)} dataset(s) sauvegardé(s) dans datasets.csv\n")
+    elif choix == "10":
+        fichier = open("datasets.csv", "r", encoding="utf-8")
+        lignes_fichier = fichier.readlines()
+        fichier.close()
+
+        datasets = []
+        for ligne in lignes_fichier[1:]:  # on saute l'en-tête
+            valeurs = ligne.strip().split(",")
+            dataset = {
+                "nom": valeurs[0],
+                "domaine": valeurs[1],
+                "lignes": int(valeurs[2]),
+                "colonnes": int(valeurs[3]),
+                "taille": float(valeurs[4]),
+                "format": valeurs[5],
+                "public": valeurs[6] == "True",
+            }
+            datasets.append(dataset)
+
+        print(f"\n{len(datasets)} dataset(s) rechargé(s) depuis datasets.csv\n")
     else:
         print("Choix invalide. Veuillez choisir entre 1 et 7.")
