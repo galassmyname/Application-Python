@@ -1,6 +1,56 @@
 # Partie 2 : Structures de contrôle
 domaines_autorises = ("Santé", "Finance", "Agriculture", "Transport", "Education")
 datasets = []
+
+# Jeu de données d'exemple pour tester les statistiques
+datasets.append(
+    {
+        "nom": "Titanic",
+        "domaine": "Transport",
+        "lignes": 891,
+        "colonnes": 12,
+        "taille": 48.0,
+        "format": "CSV",
+        "public": True,
+    }
+)
+
+datasets.append(
+    {
+        "nom": "COVID-Cases",
+        "domaine": "Santé",
+        "lignes": 500000,
+        "colonnes": 8,
+        "taille": 120.5,
+        "format": "JSON",
+        "public": True,
+    }
+)
+
+datasets.append(
+    {
+        "nom": "Stock-Prices",
+        "domaine": "Finance",
+        "lignes": 2000000,
+        "colonnes": 15,
+        "taille": 300.0,
+        "format": "CSV",
+        "public": False,
+    }
+)
+
+datasets.append(
+    {
+        "nom": "Crop-Yields",
+        "domaine": "Agriculture",
+        "lignes": 15000,
+        "colonnes": 20,
+        "taille": 25.0,
+        "format": "CSV",
+        "public": True,
+    }
+)
+
 while True:
     print("\n========================")
     print("1. Ajouter un dataset")
@@ -10,6 +60,7 @@ while True:
     print("5. Trier")
     print("6. Modifier")
     print("7. Supprimer")
+    print("8. Statistiques")
     print("==================")
 
     choix = input("Votre choix : ")
@@ -168,5 +219,36 @@ while True:
 
             if not trouve:
                 print(f"\nAucun dataset trouvé avec le nom '{nom_recherche}'.\n")
+    elif choix == "8":
+        if len(datasets) == 0:
+            print("\nAucun dataset enregistré pour le moment.\n")
+        else:
+            nb_datasets = len(datasets)
+            total_lignes = sum(d["lignes"] for d in datasets)
+            moyenne_colonnes = sum(d["colonnes"] for d in datasets) / nb_datasets
+            nb_publics = len([d for d in datasets if d["public"]])
+            nb_prives = len([d for d in datasets if not d["public"]])
+            nb_csv = len([d for d in datasets if d["format"] == "CSV"])
+            nb_json = len([d for d in datasets if d["format"] == "JSON"])
+
+            # Répartition par domaine (compréhension de dictionnaire)
+            repartition_domaines = {
+                domaine: len([d for d in datasets if d["domaine"] == domaine])
+                for domaine in domaines_autorises
+                if any(d["domaine"] == domaine for d in datasets)
+            }
+
+            print("\n=== Statistiques ===")
+            print(f"Nombre de datasets       : {nb_datasets}")
+            print(f"Nombre total de lignes   : {total_lignes}")
+            print(f"Nombre moyen de colonnes : {moyenne_colonnes:.0f}")
+            print(f"Datasets publics         : {nb_publics}")
+            print(f"Datasets privés          : {nb_prives}")
+            print(f"Format CSV               : {nb_csv}")
+            print(f"Format JSON              : {nb_json}")
+            print("Répartition par domaine :")
+            for domaine, nb in repartition_domaines.items():
+                print(f"  {domaine} : {nb}")
+            print("==========================\n")
     else:
         print("Choix invalide. Veuillez choisir entre 1 et 7.")

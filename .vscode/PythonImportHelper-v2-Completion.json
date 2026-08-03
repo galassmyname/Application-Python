@@ -4,7 +4,7 @@
         "kind": 5,
         "importPath": "datasetManager.main",
         "description": "datasetManager.main",
-        "peekOfCode": "domaines_autorises = (\"Santé\", \"Finance\", \"Agriculture\", \"Transport\", \"Education\")\ndatasets = []\nwhile True:\n    print(\"\\n========================\")\n    print(\"1. Ajouter un dataset\")\n    print(\"2. Afficher les datasets\")\n    print(\"3. Rechercher\")\n    print(\"4. Quitter\")\n    print(\"5. Trier\")\n    print(\"6. Modifier\")",
+        "peekOfCode": "domaines_autorises = (\"Santé\", \"Finance\", \"Agriculture\", \"Transport\", \"Education\")\ndatasets = []\n# Jeu de données d'exemple pour tester les statistiques\ndatasets.append(\n    {\n        \"nom\": \"Titanic\",\n        \"domaine\": \"Transport\",\n        \"lignes\": 891,\n        \"colonnes\": 12,\n        \"taille\": 48.0,",
         "detail": "datasetManager.main",
         "documentation": {}
     },
@@ -13,7 +13,7 @@
         "kind": 5,
         "importPath": "datasetManager.main",
         "description": "datasetManager.main",
-        "peekOfCode": "datasets = []\nwhile True:\n    print(\"\\n========================\")\n    print(\"1. Ajouter un dataset\")\n    print(\"2. Afficher les datasets\")\n    print(\"3. Rechercher\")\n    print(\"4. Quitter\")\n    print(\"5. Trier\")\n    print(\"6. Modifier\")\n    print(\"7. Supprimer\")",
+        "peekOfCode": "datasets = []\n# Jeu de données d'exemple pour tester les statistiques\ndatasets.append(\n    {\n        \"nom\": \"Titanic\",\n        \"domaine\": \"Transport\",\n        \"lignes\": 891,\n        \"colonnes\": 12,\n        \"taille\": 48.0,\n        \"format\": \"CSV\",",
         "detail": "datasetManager.main",
         "documentation": {}
     }
