@@ -1,5 +1,3 @@
-# main.py
-
 from interface.menu import afficher_menu
 from datasets.gestion import (
     ajouter_dataset,
@@ -12,6 +10,7 @@ from datasets.gestion import (
 )
 from datasets.statistiques import statistiques
 from stockage.csv_manager import sauvegarder_csv, charger_csv
+from stockage.json_manager import sauvegarder_json, charger_json
 
 
 def main():
@@ -43,8 +42,15 @@ def main():
             if resultat is not None:
                 datasets.clear()
                 datasets.extend(resultat)
+        elif choix == "11":
+            sauvegarder_json(datasets)
+        elif choix == "12":
+            resultat = charger_json()
+            if resultat is not None:
+                datasets.clear()
+                datasets.extend(resultat)
         else:
-            print("Choix invalide. Veuillez choisir entre 1 et 10.")
+            print("Choix invalide. Veuillez choisir entre 1 et 12.")
 
 
 if __name__ == "__main__":

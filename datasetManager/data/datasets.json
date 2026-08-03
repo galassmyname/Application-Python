@@ -1,0 +1,20 @@
+[
+    {
+        "nom": "Titanic",
+        "domaine": "Transport",
+        "lignes": 891,
+        "colonnes": 12,
+        "taille": 48.0,
+        "format": "CSV",
+        "public": true
+    },
+    {
+        "nom": "COVID-Cases",
+        "domaine": "Santé",
+        "lignes": 500000,
+        "colonnes": 8,
+        "taille": 120.5,
+        "format": "JSON",
+        "public": true
+    }
+]

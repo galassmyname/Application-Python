@@ -129,6 +129,22 @@
         "documentation": {}
     },
     {
+        "label": "sauvegarder_json",
+        "importPath": "stockage.json_manager",
+        "description": "stockage.json_manager",
+        "isExtraImport": true,
+        "detail": "stockage.json_manager",
+        "documentation": {}
+    },
+    {
+        "label": "charger_json",
+        "importPath": "stockage.json_manager",
+        "description": "stockage.json_manager",
+        "isExtraImport": true,
+        "detail": "stockage.json_manager",
+        "documentation": {}
+    },
+    {
         "label": "ajouter_dataset",
         "kind": 2,
         "importPath": "datasetManager.datasets.gestion",
