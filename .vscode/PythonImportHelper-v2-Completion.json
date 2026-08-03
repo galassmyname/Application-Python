@@ -1,92 +1,188 @@
 [
     {
         "label": "afficher_menu",
-        "kind": 2,
-        "importPath": "datasetManager.main",
-        "description": "datasetManager.main",
-        "peekOfCode": "def afficher_menu():\n    print(\"\\n========================\")\n    print(\"1. Ajouter un dataset\")\n    print(\"2. Afficher les datasets\")\n    print(\"3. Rechercher\")\n    print(\"4. Quitter\")\n    print(\"5. Trier\")\n    print(\"6. Modifier\")\n    print(\"7. Supprimer\")\n    print(\"8. Statistiques\")",
-        "detail": "datasetManager.main",
+        "importPath": "menu",
+        "description": "menu",
+        "isExtraImport": true,
+        "detail": "menu",
+        "documentation": {}
+    },
+    {
+        "label": "ajouter_dataset",
+        "importPath": "gestion",
+        "description": "gestion",
+        "isExtraImport": true,
+        "detail": "gestion",
+        "documentation": {}
+    },
+    {
+        "label": "afficher_datasets",
+        "importPath": "gestion",
+        "description": "gestion",
+        "isExtraImport": true,
+        "detail": "gestion",
+        "documentation": {}
+    },
+    {
+        "label": "rechercher_dataset",
+        "importPath": "gestion",
+        "description": "gestion",
+        "isExtraImport": true,
+        "detail": "gestion",
+        "documentation": {}
+    },
+    {
+        "label": "trier_dataset",
+        "importPath": "gestion",
+        "description": "gestion",
+        "isExtraImport": true,
+        "detail": "gestion",
+        "documentation": {}
+    },
+    {
+        "label": "modifier_dataset",
+        "importPath": "gestion",
+        "description": "gestion",
+        "isExtraImport": true,
+        "detail": "gestion",
+        "documentation": {}
+    },
+    {
+        "label": "supprimer_dataset",
+        "importPath": "gestion",
+        "description": "gestion",
+        "isExtraImport": true,
+        "detail": "gestion",
+        "documentation": {}
+    },
+    {
+        "label": "sauvegarder",
+        "importPath": "gestion",
+        "description": "gestion",
+        "isExtraImport": true,
+        "detail": "gestion",
+        "documentation": {}
+    },
+    {
+        "label": "recharger",
+        "importPath": "gestion",
+        "description": "gestion",
+        "isExtraImport": true,
+        "detail": "gestion",
+        "documentation": {}
+    },
+    {
+        "label": "datasets",
+        "importPath": "gestion",
+        "description": "gestion",
+        "isExtraImport": true,
+        "detail": "gestion",
+        "documentation": {}
+    },
+    {
+        "label": "domaines_autorises",
+        "importPath": "gestion",
+        "description": "gestion",
+        "isExtraImport": true,
+        "detail": "gestion",
+        "documentation": {}
+    },
+    {
+        "label": "statistiques",
+        "importPath": "statistiques",
+        "description": "statistiques",
+        "isExtraImport": true,
+        "detail": "statistiques",
         "documentation": {}
     },
     {
         "label": "ajouter_dataset",
         "kind": 2,
-        "importPath": "datasetManager.main",
-        "description": "datasetManager.main",
+        "importPath": "datasetManager.gestion",
+        "description": "datasetManager.gestion",
         "peekOfCode": "def ajouter_dataset():\n    nom = input(\"Nom du dataset : \")\n    domaine = input(\"Domaine : \")\n    if domaine not in domaines_autorises:\n        print(f\"Domaine invalide. Domaines autorisés : {domaines_autorises}\\n\")\n        return\n    try:\n        lignes = int(input(\"Nombre de lignes : \"))\n        colonnes = int(input(\"Nombre de colonnes : \"))\n        taille = float(input(\"Taille en Mo : \"))",
-        "detail": "datasetManager.main",
+        "detail": "datasetManager.gestion",
         "documentation": {}
     },
     {
         "label": "afficher_datasets",
         "kind": 2,
-        "importPath": "datasetManager.main",
-        "description": "datasetManager.main",
+        "importPath": "datasetManager.gestion",
+        "description": "datasetManager.gestion",
         "peekOfCode": "def afficher_datasets():\n    if len(datasets) == 0:\n        print(\"\\nAucun dataset enregistré pour le moment.\\n\")\n        return\n    print(f\"\\n=== Liste des datasets ({len(datasets)}) ===\")\n    for i, d in enumerate(datasets, start=1):\n        print(f\"\\n--- Dataset {i} ---\")\n        print(f\"Nom       : {d['nom']}\")\n        print(f\"Domaine   : {d['domaine']}\")\n        print(f\"Lignes    : {d['lignes']}\")",
-        "detail": "datasetManager.main",
+        "detail": "datasetManager.gestion",
         "documentation": {}
     },
     {
         "label": "rechercher_dataset",
         "kind": 2,
-        "importPath": "datasetManager.main",
-        "description": "datasetManager.main",
+        "importPath": "datasetManager.gestion",
+        "description": "datasetManager.gestion",
         "peekOfCode": "def rechercher_dataset():\n    if len(datasets) == 0:\n        print(\"\\nAucun dataset enregistré pour le moment.\\n\")\n        return\n    nom_recherche = input(\"Nom du dataset à rechercher : \")\n    for d in datasets:\n        if d[\"nom\"].lower() == nom_recherche.lower():\n            print(f\"\\n=== Dataset trouvé ===\")\n            print(f\"Nom       : {d['nom']}\")\n            print(f\"Domaine   : {d['domaine']}\")",
-        "detail": "datasetManager.main",
+        "detail": "datasetManager.gestion",
         "documentation": {}
     },
     {
         "label": "trier_dataset",
         "kind": 2,
-        "importPath": "datasetManager.main",
-        "description": "datasetManager.main",
+        "importPath": "datasetManager.gestion",
+        "description": "datasetManager.gestion",
         "peekOfCode": "def trier_dataset():\n    if len(datasets) == 0:\n        print(\"\\nAucun dataset enregistré pour le moment.\\n\")\n        return\n    datasets_tries = sorted(datasets, key=lambda d: d[\"lignes\"])\n    print(f\"\\n=== Datasets triés par nombre de lignes ({len(datasets_tries)}) ===\")\n    for i, d in enumerate(datasets_tries, start=1):\n        print(f\"{i}. {d['nom']} — {d['lignes']} lignes\")\n    print(\"==========================\\n\")\ndef modifier_dataset():",
-        "detail": "datasetManager.main",
+        "detail": "datasetManager.gestion",
         "documentation": {}
     },
     {
         "label": "modifier_dataset",
         "kind": 2,
-        "importPath": "datasetManager.main",
-        "description": "datasetManager.main",
+        "importPath": "datasetManager.gestion",
+        "description": "datasetManager.gestion",
         "peekOfCode": "def modifier_dataset():\n    if len(datasets) == 0:\n        print(\"\\nAucun dataset enregistré pour le moment.\\n\")\n        return\n    nom_recherche = input(\"Nom du dataset à modifier : \")\n    for d in datasets:\n        if d[\"nom\"].lower() == nom_recherche.lower():\n            print(f\"\\nDataset '{d['nom']}' trouvé. Laissez vide pour ne pas changer.\")\n            nouveau_domaine = input(f\"Domaine ({d['domaine']}) : \")\n            if nouveau_domaine != \"\":",
-        "detail": "datasetManager.main",
+        "detail": "datasetManager.gestion",
         "documentation": {}
     },
     {
         "label": "supprimer_dataset",
         "kind": 2,
-        "importPath": "datasetManager.main",
-        "description": "datasetManager.main",
+        "importPath": "datasetManager.gestion",
+        "description": "datasetManager.gestion",
         "peekOfCode": "def supprimer_dataset():\n    if len(datasets) == 0:\n        print(\"\\nAucun dataset enregistré pour le moment.\\n\")\n        return\n    nom_recherche = input(\"Nom du dataset à supprimer : \")\n    for d in datasets:\n        if d[\"nom\"].lower() == nom_recherche.lower():\n            datasets.remove(d)\n            print(f\"\\nDataset '{d['nom']}' supprimé avec succès.\\n\")\n            return",
-        "detail": "datasetManager.main",
-        "documentation": {}
-    },
-    {
-        "label": "statistiques",
-        "kind": 2,
-        "importPath": "datasetManager.main",
-        "description": "datasetManager.main",
-        "peekOfCode": "def statistiques():\n    if len(datasets) == 0:\n        print(\"\\nAucun dataset enregistré pour le moment.\\n\")\n        return\n    nb_datasets = len(datasets)\n    total_lignes = sum(d[\"lignes\"] for d in datasets)\n    moyenne_colonnes = sum(d[\"colonnes\"] for d in datasets) / nb_datasets\n    nb_publics = len([d for d in datasets if d[\"public\"]])\n    nb_prives = len([d for d in datasets if not d[\"public\"]])\n    nb_csv = len([d for d in datasets if d[\"format\"] == \"CSV\"])",
-        "detail": "datasetManager.main",
+        "detail": "datasetManager.gestion",
         "documentation": {}
     },
     {
         "label": "sauvegarder",
         "kind": 2,
-        "importPath": "datasetManager.main",
-        "description": "datasetManager.main",
+        "importPath": "datasetManager.gestion",
+        "description": "datasetManager.gestion",
         "peekOfCode": "def sauvegarder():\n    if len(datasets) == 0:\n        print(\"\\nAucun dataset à sauvegarder.\\n\")\n        return\n    fichier = open(\"datasets.csv\", \"w\", encoding=\"utf-8\")\n    fichier.write(\"nom,domaine,lignes,colonnes,taille,format,public\\n\")\n    for d in datasets:\n        ligne = f\"{d['nom']},{d['domaine']},{d['lignes']},{d['colonnes']},{d['taille']},{d['format']},{d['public']}\\n\"\n        fichier.write(ligne)\n    fichier.close()",
-        "detail": "datasetManager.main",
+        "detail": "datasetManager.gestion",
         "documentation": {}
     },
     {
         "label": "recharger",
         "kind": 2,
-        "importPath": "datasetManager.main",
-        "description": "datasetManager.main",
+        "importPath": "datasetManager.gestion",
+        "description": "datasetManager.gestion",
         "peekOfCode": "def recharger():\n    global datasets\n    try:\n        fichier = open(\"datasets.csv\", \"r\", encoding=\"utf-8\")\n        lignes_fichier = fichier.readlines()\n        fichier.close()\n        if len(lignes_fichier) <= 1:\n            print(\"\\nErreur : le fichier datasets.csv est vide.\\n\")\n            return\n        nouveaux_datasets = []",
-        "detail": "datasetManager.main",
+        "detail": "datasetManager.gestion",
+        "documentation": {}
+    },
+    {
+        "label": "domaines_autorises",
+        "kind": 5,
+        "importPath": "datasetManager.gestion",
+        "description": "datasetManager.gestion",
+        "peekOfCode": "domaines_autorises = (\"Santé\", \"Finance\", \"Agriculture\", \"Transport\", \"Education\")\ndatasets = []\ndatasets.append(\n    {\n        \"nom\": \"Titanic\",\n        \"domaine\": \"Transport\",\n        \"lignes\": 891,\n        \"colonnes\": 12,\n        \"taille\": 48.0,\n        \"format\": \"CSV\",",
+        "detail": "datasetManager.gestion",
+        "documentation": {}
+    },
+    {
+        "label": "datasets",
+        "kind": 5,
+        "importPath": "datasetManager.gestion",
+        "description": "datasetManager.gestion",
+        "peekOfCode": "datasets = []\ndatasets.append(\n    {\n        \"nom\": \"Titanic\",\n        \"domaine\": \"Transport\",\n        \"lignes\": 891,\n        \"colonnes\": 12,\n        \"taille\": 48.0,\n        \"format\": \"CSV\",\n        \"public\": True,",
+        "detail": "datasetManager.gestion",
         "documentation": {}
     },
     {
@@ -99,21 +195,21 @@
         "documentation": {}
     },
     {
-        "label": "domaines_autorises",
-        "kind": 5,
-        "importPath": "datasetManager.main",
-        "description": "datasetManager.main",
-        "peekOfCode": "domaines_autorises = (\"Santé\", \"Finance\", \"Agriculture\", \"Transport\", \"Education\")\ndatasets = []\n# Jeu de données d'exemple pour tester (statistiques, tri, etc.)\ndatasets.append(\n    {\n        \"nom\": \"Titanic\",\n        \"domaine\": \"Transport\",\n        \"lignes\": 891,\n        \"colonnes\": 12,\n        \"taille\": 48.0,",
-        "detail": "datasetManager.main",
+        "label": "afficher_menu",
+        "kind": 2,
+        "importPath": "datasetManager.menu",
+        "description": "datasetManager.menu",
+        "peekOfCode": "def afficher_menu():\n    print(\"\\n========================\")\n    print(\"1. Ajouter un dataset\")\n    print(\"2. Afficher les datasets\")\n    print(\"3. Rechercher\")\n    print(\"4. Quitter\")\n    print(\"5. Trier\")\n    print(\"6. Modifier\")\n    print(\"7. Supprimer\")\n    print(\"8. Statistiques\")",
+        "detail": "datasetManager.menu",
         "documentation": {}
     },
     {
-        "label": "datasets",
-        "kind": 5,
-        "importPath": "datasetManager.main",
-        "description": "datasetManager.main",
-        "peekOfCode": "datasets = []\n# Jeu de données d'exemple pour tester (statistiques, tri, etc.)\ndatasets.append(\n    {\n        \"nom\": \"Titanic\",\n        \"domaine\": \"Transport\",\n        \"lignes\": 891,\n        \"colonnes\": 12,\n        \"taille\": 48.0,\n        \"format\": \"CSV\",",
-        "detail": "datasetManager.main",
+        "label": "statistiques",
+        "kind": 2,
+        "importPath": "datasetManager.statistiques",
+        "description": "datasetManager.statistiques",
+        "peekOfCode": "def statistiques():\n    if len(datasets) == 0:\n        print(\"\\nAucun dataset enregistré pour le moment.\\n\")\n        return\n    nb_datasets = len(datasets)\n    total_lignes = sum(d[\"lignes\"] for d in datasets)\n    moyenne_colonnes = sum(d[\"colonnes\"] for d in datasets) / nb_datasets\n    nb_publics = len([d for d in datasets if d[\"public\"]])\n    nb_prives = len([d for d in datasets if not d[\"public\"]])\n    nb_csv = len([d for d in datasets if d[\"format\"] == \"CSV\"])",
+        "detail": "datasetManager.statistiques",
         "documentation": {}
     }
 ]
